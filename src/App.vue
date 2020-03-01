@@ -1,28 +1,33 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div id="app">
+        <tool-bar></tool-bar>
+        <transition name="page">
+            <router-view></router-view>
+        </transition>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+    import ToolBar from "./components/Toolbar";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+    export default {
+        name: 'App',
+        components: {
+            ToolBar
+        }
+
+    }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    .page-enter-active, .page-leave-active {
+      transition: opacity .5s;
+    }
+    .page-enter, .page-leave-to /* .page-leave-active below version 2.1.8 */ {
+      opacity: 0;
+    }
 </style>
