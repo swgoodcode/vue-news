@@ -1,19 +1,14 @@
-<template>
-    <list-item></list-item>
-</template>
+import ListView from "./ListView";
+import bus from "../utils/bus";
 
-<script>
-    import ListItem from "../components/ListItem";
-    import bus from "../utils/bus";
-
-    export default {
-        components: {
-            ListItem
-        },
+export default function createListView(name) {
+    return {
+        // 재사용할 인스턴스(컴포넌트) 옵션들이 들어갈 자리
+        name: name,
         created() {
             bus.$emit('start:spinner');
             setTimeout(() => {
-                this.$store.dispatch('FETCH_ASK')
+                this.$store.dispatch('FETCH_LIST', this.$route.name)
                     .then(() => {
                         console.log('fetched');
                         bus.$emit('end:spinner');
@@ -22,9 +17,10 @@
                         console.log(error);
                     });
             }, 3000);
+
+        },
+        render(createElement) {
+            return createElement(ListView);
         }
     }
-</script>
-
-<style scoped>
-</style>
+}
