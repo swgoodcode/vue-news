@@ -16,7 +16,7 @@ export default function createListView(name) {
                     .catch((error) => {
                         console.log(error);
                     });
-            }, 3000);
+            }, 500);
 
         },
         render(createElement) {
