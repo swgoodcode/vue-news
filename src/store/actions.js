@@ -21,11 +21,10 @@ export default {
     },
     FETCH_LIST({commit}, pageName) {
         return fetchList(pageName)
-            .then((response) => {
-                console.log("#3");
-                commit('SET_LIST', response.data);
+            .then(({data}) => {
+                commit('SET_LIST', data);
             }).catch(error => {
-            console.log(error);
-        })
+                console.log(error);
+            })
     }
 }

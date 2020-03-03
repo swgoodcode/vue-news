@@ -10,7 +10,7 @@
         components: {
             ListItem,
         },
-        mixins: [ListMixin],
+        mixins: [ListMixin]
     }
 </script>
 
