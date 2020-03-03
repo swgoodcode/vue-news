@@ -22,6 +22,7 @@ function fetchItemInfo(item) {
     return axios.get(`${config.baseUrl}item/${item}.json`);
 }
 function fetchList(pageName) {
+    console.log("#2");
     return axios.get(`${config.baseUrl}${pageName}/1.json`);
 }
 
