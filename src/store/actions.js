@@ -20,7 +20,7 @@ export default {
             })
     },
     FETCH_LIST({commit}, pageName) {
-        fetchList(pageName)
+        return fetchList(pageName)
             .then(({data}) => {
             commit('SET_LIST', data);
         }).catch(error => {
